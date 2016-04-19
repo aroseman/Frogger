@@ -26,7 +26,7 @@ use ieee.std_logic_1164.all;
 
 entity frogger_board is port
 	( 
-		button_press	: in std_logic;		--8 down to 1
+		button_press, rst, clk	: in std_logic;		--8 down to 1
 		row, col	: out std_logic;	--1 to 8
 		
 	);
@@ -73,7 +73,9 @@ architecture frogger_board_a of frogger_board is
 	-- Internal Signal Declarations
 	-------------------------------------------------------
 	
-	
+	signal select0 : std logic;
+	signal select1 : std logic;
+	signal select2 : std logic;
 
 begin
 	
@@ -81,8 +83,98 @@ begin
 	-- Component Instantiations
 	-------------------------------------------------------
 	
+	--Decoder------
 
-        
+	 Decoder1 : Decoder port map
+	( 
+		s0 => select0,
+		s1 => select1,
+		s2 => select2,
+		enabler => button, 
+	
+		d0 => row0,
+		d1 => row1,
+		d2 => row2,
+		d3 => row3,
+		d4 => row4,
+		d5 => row5,
+		d6 => row6,
+		d7 => row7  
+	);
+
+	--frogger counter----
+	
+        frogshift : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
+	
+	--row counters----
+	
+	row1 : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
+	
+	row2 : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
+	
+	row3 : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
+	
+	row4 : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
+	
+	row5 : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
+	
+	row6 : Counter1 port map
+	( 
+		 rst => rst,
+		 clk => clk,
+		 enable => button, 
+		 q0 =>select0,
+		 q1 => select1,
+		 q2 => select2
+	);
 	
 	-------------------------------------------------------------
 	-- Begin Design Description of Gates and how to connect them
