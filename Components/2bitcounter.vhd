@@ -27,7 +27,7 @@ use ieee.std_logic_1164.all;
 entity Counter1 is port
 	( 
 		 rst, clk, enable: in std_logic; 
-		q0, q1 : out std_logic --carryout and sum ,cout
+		q0, q1, q2 : out std_logic --carryout and sum ,cout
 	);
 end Counter1;
 ----------------------------------------------------------------------
@@ -71,15 +71,16 @@ architecture Counter1_a of Counter1 is
 	-------------------------------------------------------
 	signal b0   : std_logic; 
 	signal b1   : std_logic; 
-
+	signal b2   : std_logic;
 
 
 	signal sum0   : std_logic;
 	signal sum1   : std_logic; 
+	signal sum2   : std_logic;
 
 	signal cin1   : std_logic;
 	signal cin2   : std_logic;
-	
+	signal cout2  : std_logic;
 	
 	
 
@@ -126,6 +127,15 @@ begin
 		 cout 	=> cin2		,
 		 s 	=> sum1		
     	);
+	
+	FullAdder2 : FullAdder  port map
+	(
+		 a 	=> '0'	,
+		 b	=> b2	,
+		 cin 	=> cin2	,
+		 cout 	=> cout2	,
+		 s 	=> sum2		
+    	);
 
 ----	<------	Decoder ------>
 --	Decoder : Decoder is port map
@@ -148,7 +158,7 @@ begin
 	-------------------------------------------------------------	
 	q0 <= b0;
 	q1 <= b1;
-	
+	q2 <= b2;
 	
 		 
 end Counter1_a; -- .same name as the architecture

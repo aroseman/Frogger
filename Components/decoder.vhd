@@ -26,9 +26,9 @@ use ieee.std_logic_1164.all;
 
 entity Decoder is port
 	( 
-		s0,s1,enabler: in std_logic; 
+		s0,s1,s2,enabler: in std_logic; 
 	
-		d0,d1,d2,d3 : out std_logic 
+		d0,d1,d2,d3,d4,d5,d6,d7 : out std_logic  
 	);
 end Decoder;
 ----------------------------------------------------------------------
