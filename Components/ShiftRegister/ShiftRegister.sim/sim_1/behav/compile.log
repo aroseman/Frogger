@@ -1,0 +1,14 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "P:/Private/Documents/GitHub/Frogger/Components/DFF270_re.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity dff270_re
+INFO: [VRFC 10-163] Analyzing VHDL file "P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity shiftRegister
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:84]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:94]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:103]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:112]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:121]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:130]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:139]
+ERROR: [VRFC 10-704] formal clken has no actual or default value [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:148]
+ERROR: [VRFC 10-1504] unit shiftregister_a ignored due to previous errors [P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd:36]
+INFO: [VRFC 10-240] VHDL file P:/Private/Documents/GitHub/Frogger/Components/ShiftRegister/shiftRegister.vhd ignored due to errors

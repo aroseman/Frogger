@@ -68,6 +68,16 @@ architecture frogger_board_a of frogger_board is
 		q0, q1, q2 : out std_logic
 	);
 	end component;
+
+--	<--MUX-->
+
+	component Mux is port
+	( 
+		s0,s1,s2,d0,d1,d2,d3,d4,d5,d6, d7: in std_logic; 
+	
+		F: out std_logic 
+	);
+	end component;   
 	
 	-------------------------------------------------------
 	-- Internal Signal Declarations
@@ -77,6 +87,89 @@ architecture frogger_board_a of frogger_board is
 	signal select1 : std logic;
 	signal select2 : std logic;
 
+--	<--shift register signals-->
+	signal sr_0_1  : std logic;
+	signal sr_0_2  : std logic;
+	signal sr_0_3  : std logic;
+	signal sr_0_4  : std logic;
+	signal sr_0_5  : std logic;
+	signal sr_0_6  : std logic;
+	signal sr_0_7  : std logic;
+	signal sr_0_8  : std logic;
+
+	
+	signal sr_1_1  : std logic;
+	signal sr_1_2  : std logic;
+	signal sr_1_3  : std logic;
+	signal sr_1_4  : std logic;
+	signal sr_1_5  : std logic;
+	signal sr_1_6  : std logic;
+	signal sr_1_7  : std logic;
+	signal sr_1_8  : std logic;
+	
+	
+	signal sr_2_1  : std logic;
+	signal sr_2_2  : std logic;
+	signal sr_2_3  : std logic;
+	signal sr_2_4  : std logic;
+	signal sr_2_5  : std logic;
+	signal sr_2_6  : std logic;
+	signal sr_2_7  : std logic;
+	signal sr_2_8  : std logic;
+
+	
+	signal sr_3_1  : std logic;
+	signal sr_3_2  : std logic;
+	signal sr_3_3  : std logic;
+	signal sr_3_4  : std logic;
+	signal sr_3_5  : std logic;
+	signal sr_3_6  : std logic;
+	signal sr_3_7  : std logic;
+	signal sr_3_8  : std logic;
+	
+	
+	signal sr_4_1  : std logic;
+	signal sr_4_2  : std logic;
+	signal sr_4_3  : std logic;
+	signal sr_4_4  : std logic;
+	signal sr_4_5  : std logic;
+	signal sr_4_6  : std logic;
+	signal sr_4_7  : std logic;
+	signal sr_4_8  : std logic;
+	
+	
+	signal sr_5_1  : std logic;
+	signal sr_5_2  : std logic;
+	signal sr_5_3  : std logic;
+	signal sr_5_4  : std logic;
+	signal sr_5_5  : std logic;
+	signal sr_5_6  : std logic;
+	signal sr_5_7  : std logic;
+	signal sr_5_8  : std logic;
+
+--	<--MUX SIGNALS-->
+	
+	signal frogcol1 : std logic;
+	signal frogcol2 : std logic;
+	signal frogcol3 : std logic;
+	signal frogcol4 : std logic;
+	signal frogcol5 : std logic;
+	signal frogcol6 : std logic;
+	signal frogcol7 : std logic;
+	signal frogcol8 : std logic;
+
+
+--	<--MUX OUTPUTS-->
+	
+	signal output_mux_1 : std_logic;
+	signal output_mux_2 : std_logic;
+	signal output_mux_3 : std_logic;
+	signal output_mux_4 : std_logic;
+	signal output_mux_5 : std_logic;
+	signal output_mux_6 : std_logic;
+	signal output_mux_7 : std_logic;
+	signal output_mux_8 : std_logic;
+
 begin
 	
 	-------------------------------------------------------
@@ -85,7 +178,24 @@ begin
 	
 	--Decoder------
 
-	 Decoder1 : Decoder port map
+	 Frog_Decoder : Decoder port map
+	( 
+		s0 => select0,
+		s1 => select1,
+		s2 => select2,
+		enabler => button, 
+	
+		d0 => row0,
+		d1 => row1,
+		d2 => row2,
+		d3 => row3,
+		d4 => row4,
+		d5 => row5,
+		d6 => row6,
+		d7 => row7  
+	);
+
+	Row_Decoder : Decoder port map
 	( 
 		s0 => select0,
 		s1 => select1,
@@ -114,7 +224,7 @@ begin
 		 q2 => select2
 	);
 	
-	--row counters----
+	--row shifts----
 	
 	row1 : Counter1 port map
 	( 
@@ -175,11 +285,160 @@ begin
 		 q1 => select1,
 		 q2 => select2
 	);
+
+	-------------------------------------------------------------
+	--MUXES
+	-------------------------------------------------------------
+	mux_1 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_1;
+		d1 => sr_1_1;
+		d2 => sr_2_1;
+		d3 => sr_3_1;
+		d4 => sr_4_1;
+		d5 => sr_5_1;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_1 
+	);	
+
+	mux_2 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_2;
+		d1 => sr_1_2;
+		d2 => sr_2_2;
+		d3 => sr_3_2;
+		d4 => sr_4_2;
+		d5 => sr_5_2;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_2 
+	);	
+
+	mux_3 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_3;
+		d1 => sr_1_3;
+		d2 => sr_2_3;
+		d3 => sr_3_3;
+		d4 => sr_4_3;
+		d5 => sr_5_3;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_3 
+	);	
+
+	mux_4 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_4;
+		d1 => sr_1_4;
+		d2 => sr_2_4;
+		d3 => sr_3_4;
+		d4 => sr_4_4;
+		d5 => sr_5_4;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_4 
+	);	
+
+	--COLUMN WITH FROGGER
+	mux_5 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => frogcol1;
+		d1 => frogcol2;
+		d2 => forgcol3;
+		d3 => frogcol4;
+		d4 => frogcol5;
+		d5 => frogcol6;
+		d6 => frogcol7;
+		d7 => frogcol8;
+	
+		F: output_mux_5 
+	);  
+
+	mux_6 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_6;
+		d1 => sr_1_6;
+		d2 => sr_2_6;
+		d3 => sr_3_6;
+		d4 => sr_4_6;
+		d5 => sr_5_6;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_6 
+	);	
+	
+	mux_7 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_7;
+		d1 => sr_1_7;
+		d2 => sr_2_7;
+		d3 => sr_3_7;
+		d4 => sr_4_7;
+		d5 => sr_5_7;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_7 
+	);
+
+	mux_8 : Mux port map
+	( 
+		s0 => 
+		s1 => 
+		s2 => 
+		d0 => sr_0_8;
+		d1 => sr_1_8;
+		d2 => sr_2_8;
+		d3 => sr_3_8;
+		d4 => sr_4_8;
+		d5 => sr_5_8;
+		d6 => '0';
+		d7 => '0';
+	
+		F: output_mux_8 
+	);		
+	  
 	
 	-------------------------------------------------------------
 	-- Begin Design Description of Gates and how to connect them
 	-------------------------------------------------------------	
 	
+	frogcol1 <= sr_0_5 OR row0; 
+	frogcol2 <= sr_1_5 OR row1; 
+	frogcol3 <= sr_2_5 OR row2;
+        frogcol4 <= sr_3_5 OR row3;
+	frogcol5 <= sr_4_5 OR row4;
+	frogcol6 <= sr_5_5 OR row5;
+	frogcol7 <= sr_6_5 OR row6; 
+	frogcol8 <= sr_7_5 OR row7;	
 	
 		 
 end frogger_board_a; -- .same name as the architecture

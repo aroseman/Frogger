@@ -26,7 +26,7 @@ use ieee.std_logic_1164.all;
 
 entity Mux is port
 	( 
-		s0,s1,d0,d1,d2,d3: in std_logic; 
+		s0,s1,s2, d0,d1,d2,d3,d5,d6,d7: in std_logic;  
 	
 		F: out std_logic 
 	);
@@ -49,10 +49,18 @@ architecture Mux_a of Mux is
 	-------------------------------------------------------
 	signal ns0   : std_logic; 
 	signal ns1   : std_logic;
+	signal ns2   : std_logic;
+
 	signal out_and_d0 : std_logic;
 	signal out_and_d1 : std_logic;
 	signal out_and_d2 : std_logic;
 	signal out_and_d3 : std_logic;
+	signal out_and_d4 : std_logic;
+	signal out_and_d5 : std_logic;
+	signal out_and_d6 : std_logic;
+	signal out_and_d7 : std_logic;
+	
+	
 
 begin
 	
@@ -67,12 +75,17 @@ begin
 	-------------------------------------------------------------	
 	ns0	<= NOT s0;
 	ns1	<= NOT s1;
+	ns2	<= NOT s2;
 	
-	out_and_d0 <= ns0 AND ns1 AND d0;
-	out_and_d1 <= ns1 AND s0 AND d1;
-	out_and_d2 <= s1 AND ns0 AND d2;
-	out_and_d3 <= s0 AND s1 AND d3;
+	out_and_d0 <= ns0 AND ns1 AND ns2 AND d0;
+	out_and_d1 <= ns2 AND ns1 AND s0 AND d1;
+	out_and_d2 <= ns2 AND s1 AND ns0 AND d2;
+	out_and_d3 <= ns2 AND s0 AND s1 AND d3;
+	out_and_d4 <= s2 AND ns1 AND ns0 AND d4;
+	out_and_d5 <= s2 AND ns1 AND s0 AND d5;
+	out_and_d6 <= s2 AND s1 AND ns0 AND d6;
+	out_and_d7 <= s2 AND s1 AND s0 AND d7;
 	
-	F <= out_and_d0 OR out_and_d1 OR out_and_d2 OR out_and_d3;
+	F <= out_and_d0 OR out_and_d1 OR out_and_d2 OR out_and_d3 OR out_and_d4 OR out_and_d5 OR out_and_d6 OR out_and_d7 ;
 		 
 end Mux_a; -- .same name as the architecture
